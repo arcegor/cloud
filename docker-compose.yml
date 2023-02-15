@@ -6,13 +6,19 @@ services:
     build: notebook/
     ports:
       - 8888:8888
-    environment:
-      - PASSWORD=123
+    volumes:
+      - ./storage:/notebook/storage
   client:
+    image: client
     container_name: client
-    build: client/
     command: python3 main.py
-    depends_on:
-      - notebook
-    network_mode: host
-    
+    build: client/
+    volumes:
+      - ./storage:/client/storage
+
+volumes:
+  data:
+    external:
+      true
+    name:
+      storage

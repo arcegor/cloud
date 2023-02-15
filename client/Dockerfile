@@ -1,7 +1,7 @@
 FROM python:3
 
+ADD . /client
+
 WORKDIR /client/
 
-ADD . /client/
-
-CMD ["python3", "main.py"]
+RUN pip install jupyter notebook

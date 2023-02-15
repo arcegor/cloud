@@ -1,10 +1,10 @@
 FROM python:3.8
 
+ADD . /notebook
+
 WORKDIR /notebook/
 
-RUN pip install jupyter jupyterlab ipykernel notebook
-
-COPY . ./notebook
+RUN pip install jupyter notebook
 
 EXPOSE 8888
 
