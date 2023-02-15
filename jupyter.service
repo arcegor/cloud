@@ -1,0 +1,13 @@
+[Unit]
+Description=Jupyter Notebook
+[Service]
+Type=simple
+PIDFile=/run/jupyter.pid
+ExecStart=/opt/jupyter/jupyter/bin/jupyter-notebook ---config=/home/egor/.jupyter/jupyter_notebook_config.py
+User=egor
+Group=google-sudoers
+WorkingDirectory=/home/egor/
+Restart=always
+RestartSec=10
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,18 @@
+version: '3.2'
+services:
+  notebook:
+    image: jupyter
+    container_name: notebook
+    build: notebook/
+    ports:
+      - 8888:8888
+    environment:
+      - PASSWORD=123
+  client:
+    container_name: client
+    build: client/
+    command: python3 main.py
+    depends_on:
+      - notebook
+    network_mode: host
+    
